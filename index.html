@@ -2,43 +2,78 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090a0d"><meta name="description" content="MODNEST — пространство игровых модификаций. Находи, сохраняй и собирай свою идеальную игру.">
-<title>MODNEST — твой игровой мод-хаб</title>
+<meta name="theme-color" content="#0b0d10"><meta name="description" content="MODNEST — твоя игровая библиотека модификаций.">
+<title>MODNEST — игровой мод-хаб</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<aside class="sidebar" id="sidebar">
+ <a class="brand" href="#top"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>MODNEST<small>MODS. MADE. BETTER.</small></span></a>
+ <div class="side-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+ <nav class="side-nav">
+  <a class="side-link active" href="#top"><span class="side-icon">⌂</span>Обзор <span class="side-indicator"></span></a>
+  <a class="side-link" href="#catalog"><span class="side-icon">▦</span>Каталог <span class="side-count">08</span></a>
+  <a class="side-link" href="#collections"><span class="side-icon">◇</span>Подборки</a>
+  <button class="side-link" id="favorites-shortcut"><span class="side-icon">♡</span>Избранное <span class="side-count" id="favorite-count">0</span></button>
+ </nav>
+ <div class="side-label side-label-spaced">СООБЩЕСТВО</div>
+ <nav class="side-nav">
+  <a class="side-link" href="#community"><span class="side-icon">◎</span>Сообщество</a>
+  <a class="side-link" href="#about"><span class="side-icon">⌘</span>О проекте</a>
+ </nav>
+ <div class="sidebar-bottom">
+  <div class="side-status"><span class="status-dot"></span><div><b>Все системы работают</b><small>MODNEST STATUS</small></div></div>
+  <button class="profile-button" id="login"><span class="profile-avatar">U</span><span class="profile-copy"><b>Мой профиль</b><small>Локальный аккаунт</small></span><span class="profile-chevron">⌄</span></button>
+ </div>
+</aside>
+<div class="app-shell">
 <header class="topbar">
- <a class="brand" href="#top" aria-label="MODNEST home"><span class="brand-symbol">M<span>✳</span></span><span class="brand-name">MODNEST<small>YOUR MOD UNIVERSE</small></span></a>
- <nav class="main-nav"><a class="nav-link active" href="#top">Главная</a><a class="nav-link" href="#catalog">Каталог</a><a class="nav-link" href="#collections">Подборки</a><a class="nav-link" href="#community">Сообщество</a></nav>
- <div class="top-actions"><button class="icon-button" id="favorites-shortcut" aria-label="Избранное">♡<i id="favorite-count">0</i></button><button class="profile-button" id="login"><span class="profile-avatar">U</span><span>Мой профиль</span><b>⌄</b></button><button class="mobile-menu" id="hamburger">☰</button></div>
+ <div class="breadcrumbs"><span>MODNEST</span><i>/</i><b>Обзор</b></div>
+ <div class="topbar-right"><div class="system-pill"><span></span> Библиотека обновлена</div><button class="top-icon" id="top-search" aria-label="Поиск">⌕</button><button class="mobile-menu" id="hamburger" aria-label="Открыть меню">☰</button><button class="top-avatar" id="top-profile">U</button></div>
 </header>
 <main id="top">
-<section class="hero-shell">
- <div class="hero-copy"><div class="live-label"><span></span> MODNEST COMMUNITY <b>● ONLINE</b></div>
-  <h1>ИГРАЙ<br>ПО <em>СВОИМ</em><br>ПРАВИЛАМ<span>.</span></h1>
-  <p>Твоя игровая вселенная начинается здесь. Открывай модификации, собирай собственные подборки и меняй привычный игровой опыт.</p>
-  <div class="hero-ctas"><button class="primary-button" id="go-catalog">Исследовать каталог <span>↗</span></button><a class="text-link" href="#collections">Посмотреть подборки <span>→</span></a></div>
-  <div class="hero-stats"><div><strong>408<span>+</span></strong><small>модификаций</small></div><div><strong>828K<span>+</span></strong><small>загрузок</small></div><div><strong>24/7</strong><small>всегда на связи</small></div></div>
- </div>
- <div class="hero-art"><div class="art-topline"><span>FEATURED DROP / 001</span><span class="art-live">● EDITOR'S PICK</span></div><div class="art-visual"><div class="art-grain"></div><div class="art-sun"></div><div class="art-planet"></div><div class="art-horizon"></div><div class="art-mountain m1"></div><div class="art-mountain m2"></div><div class="art-mountain m3"></div><div class="art-rings"></div><div class="art-word">NIGHT<br><i>DRIVE</i></div><div class="art-caption">REDEFINE YOUR GAMEPLAY / VOL. 01</div></div><div class="art-bottom"><span><b class="tiny-dot"></b> Curated for you</span><span>01 <i>/</i> 08</span></div><div class="floating-chip chip-rating">✦ <b>4.9</b><small>community score</small></div><div class="floating-chip chip-new"><b>NEW DROP</b><small>Обновления каждую неделю</small></div></div>
- <div class="hero-index">01 <span>—</span> 04</div>
-</section>
-<div class="marquee"><div>MOD YOUR WORLD <b>✳</b> FIND YOUR STYLE <b>✳</b> PLAY DIFFERENT <b>✳</b> MOD YOUR WORLD <b>✳</b> FIND YOUR STYLE <b>✳</b> PLAY DIFFERENT <b>✳</b></div></div>
-<section class="section catalog-section" id="catalog">
- <div class="section-top"><div><div class="kicker"><span>01</span> / DISCOVER THE LIBRARY</div><h2>НАЙДИ СВОЙ <em>СТИЛЬ</em></h2><p>От визуальных сборок до небольших улучшений — выбирай то, что подходит тебе.</p></div><div class="catalog-counter"><strong>08</strong><span>CURATED<br>MODS</span></div></div>
- <div class="catalog-toolbar"><div class="category-tabs" id="category-tabs"><button class="category-tab active" data-filter="Все">Все моды <span>08</span></button><button class="category-tab" data-filter="Редуксы">Редуксы</button><button class="category-tab" data-filter="Ганпаки">Ганпаки</button><button class="category-tab" data-filter="Карты">Карты</button><button class="category-tab" data-filter="Одежда">Одежда</button><button class="category-tab" data-filter="Звуки">Звуки</button></div><div class="toolbar-tools"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Поиск модификаций..." autocomplete="off"><kbd>⌘ K</kbd></label><select id="sort" aria-label="Сортировка"><option value="popular">По популярности</option><option value="new">Сначала новые</option><option value="name">По названию</option></select></div></div>
- <div class="catalog-subbar"><span id="count">ПОКАЗАНО 8 МОДИФИКАЦИЙ</span><button id="favorites-filter" class="favorites-filter">♡ Только избранное <span id="favorite-count-2">0</span></button></div>
- <div class="mod-grid" id="mod-grid"></div><div class="empty-state hidden" id="empty"><div>⌕</div><h3>Ничего не найдено</h3><p>Попробуй изменить запрос или выбрать другую категорию.</p><button id="reset">Сбросить фильтры</button></div>
- <div class="catalog-footer"><span>БОЛЬШЕ МОДОВ — БОЛЬШЕ ВОЗМОЖНОСТЕЙ</span><button class="outline-button" id="more">Сбросить фильтры <span>↗</span></button></div>
-</section>
-<section class="collection-section section" id="collections"><div class="collection-intro"><div class="kicker"><span>02</span> / HANDPICKED COLLECTIONS</div><h2>СОБРАНО<br><em>СООБЩЕСТВОМ.</em></h2><p>Готовые сочетания модификаций для разных настроений и игровых сценариев.</p><a class="text-link" href="#catalog">Собрать свою коллекцию <span>→</span></a></div><div class="collection-cards"><article class="collection-card collection-red"><div class="collection-art red-art"><span>01 / VISUAL</span><b>CRIMSON<br>MOOD</b><i>◉</i></div><div class="collection-meta"><div><h3>Crimson Mood</h3><p>Контраст · Атмосфера · Детали</p></div><span>04 ITEMS ↗</span></div></article><article class="collection-card collection-blue"><div class="collection-art blue-art"><span>02 / PERFORMANCE</span><b>SMOOTH<br>FLOW</b><i>⌁</i></div><div class="collection-meta"><div><h3>Smooth Flow</h3><p>Лёгкость · Скорость · Комфорт</p></div><span>03 ITEMS ↗</span></div></article></div></section>
-<section class="community-section section" id="community"><div class="community-panel"><div class="community-copy"><div class="kicker"><span>03</span> / JOIN THE COMMUNITY</div><h2>ТВОЯ ИГРА.<br><em>ТВОЯ ИСТОРИЯ.</em></h2><p>MODNEST развивается вместе с игроками. Сохраняй понравившиеся моды, формируй коллекции и открывай новые сочетания.</p><button class="primary-button" id="join">Присоединиться <span>↗</span></button></div><div class="community-visual"><div class="community-orbit"></div><div class="community-monogram">M<span>✳</span></div><div class="community-note">MAKE IT<br>YOUR OWN.</div></div></div></section>
+ <section class="welcome-row">
+  <div><div class="eyebrow"><span class="eyebrow-line"></span> ТВОЁ ПРОСТРАНСТВО ДЛЯ МОДОВ</div><h1>Играй <em>по-новому.</em></h1><p>Всё, что нужно для твоей идеальной игровой атмосферы — в одном месте.</p></div>
+  <div class="welcome-date"><span class="date-icon">✳</span><div><b>MODNEST / 01</b><small>YOUR PERSONAL MOD HUB</small></div></div>
+ </section>
+ <section class="feature-panel">
+  <div class="feature-image"></div><div class="feature-shade"></div>
+  <div class="feature-content"><div class="feature-top"><span class="feature-badge"><i></i> ВЫБОР РЕДАКЦИИ</span><span class="feature-number">FEATURED / 001</span></div>
+   <div class="feature-copy"><div class="feature-kicker">НОВАЯ ЭСТЕТИКА ТВОЕЙ ИГРЫ</div><h2>MAKE IT<br><em>YOUR WORLD.</em></h2><p>Открой для себя новые визуальные стили, атмосферные сборки и детали, которые меняют впечатление от игры.</p><button class="feature-button" id="go-catalog">Открыть каталог <span>↗</span></button></div>
+   <div class="feature-bottom"><span><b>01</b> / 04 &nbsp; EDITOR'S SELECTION</span><span>CURATED FOR PLAYERS</span></div>
+  </div>
+  <div class="feature-orbit orbit-one"></div><div class="feature-orbit orbit-two"></div><div class="feature-emblem">M<span>✳</span></div>
+ </section>
+ <section class="quick-stats">
+  <div class="stat-item"><span class="stat-icon">▦</span><div><b>408<span>+</span></b><small>МОДИФИКАЦИЙ В БИБЛИОТЕКЕ</small></div><span class="stat-trend">LIBRARY</span></div>
+  <div class="stat-item"><span class="stat-icon">⇩</span><div><b>828K<span>+</span></b><small>ЗАГРУЗОК СООБЩЕСТВА</small></div><span class="stat-trend">COMMUNITY</span></div>
+  <div class="stat-item"><span class="stat-icon">✦</span><div><b>4.9<span>/5</span></b><small>СРЕДНЯЯ ОЦЕНКА</small></div><span class="stat-trend">RATING</span></div>
+  <div class="stat-item stat-status"><span class="stat-icon">◉</span><div><b>Online</b><small>СООБЩЕСТВО АКТИВНО</small></div><span class="online-pulse"></span></div>
+ </section>
+ <section class="catalog-section" id="catalog">
+  <div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> DISCOVER / 01</div><h2>Твоя <em>библиотека.</em></h2><p>Подбирай модификации под свой стиль и сохраняй лучшее.</p></div><a class="view-all" href="#catalog">ВСЯ БИБЛИОТЕКА <span>↗</span></a></div>
+  <div class="catalog-controls"><div class="category-tabs" id="category-tabs"><button class="category-tab active" data-filter="Все">Все моды <span>08</span></button><button class="category-tab" data-filter="Редуксы">Редуксы</button><button class="category-tab" data-filter="Ганпаки">Ганпаки</button><button class="category-tab" data-filter="Карты">Карты</button><button class="category-tab" data-filter="Одежда">Одежда</button><button class="category-tab" data-filter="Звуки">Звуки</button></div>
+   <div class="toolbar-tools"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Найти модификацию..." autocomplete="off"><kbd>⌘ K</kbd></label><select id="sort" aria-label="Сортировка"><option value="popular">Популярные</option><option value="new">Сначала новые</option><option value="name">По названию</option></select></div>
+  </div>
+  <div class="catalog-subbar"><span id="count">ПОКАЗАНО 08 МОДИФИКАЦИЙ</span><button id="favorites-filter" class="favorites-filter">♡ Только избранное <span id="favorite-count-2">0</span></button></div>
+  <div class="mod-grid" id="mod-grid"></div><div class="empty-state hidden" id="empty"><div>⌕</div><h3>Ничего не найдено</h3><p>Попробуй изменить запрос или выбрать другую категорию.</p><button id="reset">Сбросить фильтры</button></div>
+  <div class="catalog-footer"><span>ПОКАЗАНЫ ДЕМО-МОДИФИКАЦИИ · РЕАЛЬНЫЕ ФАЙЛЫ ПОКА НЕ ПОДКЛЮЧЕНЫ</span><button class="outline-button" id="more">Сбросить фильтры <span>↗</span></button></div>
+ </section>
+ <section class="collections-section" id="collections"><div class="section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> HANDPICKED / 02</div><h2>Готовые <em>сочетания.</em></h2><p>Идеи и направления для твоей следующей сборки.</p></div></div>
+  <div class="collection-grid">
+   <article class="collection-card collection-red"><div class="collection-art"><span class="collection-index">COLLECTION 001</span><div class="collection-shape"></div><b>CRIMSON<br>MOOD<span>.</span></b><span class="collection-arrow">↗</span></div><div class="collection-info"><div><b>Crimson Mood</b><small>Контраст · Атмосфера · Детали</small></div><span>04 ITEMS</span></div></article>
+   <article class="collection-card collection-blue"><div class="collection-art"><span class="collection-index">COLLECTION 002</span><div class="collection-shape"></div><b>SMOOTH<br>FLOW<span>.</span></b><span class="collection-arrow">↗</span></div><div class="collection-info"><div><b>Smooth Flow</b><small>Лёгкость · Скорость · Комфорт</small></div><span>03 ITEMS</span></div></article>
+   <article class="collection-card collection-gold"><div class="collection-art"><span class="collection-index">COLLECTION 003</span><div class="collection-shape"></div><b>NIGHT<br>DRIVE<span>.</span></b><span class="collection-arrow">↗</span></div><div class="collection-info"><div><b>Night Drive</b><small>Ночь · Неон · Город</small></div><span>05 ITEMS</span></div></article>
+  </div>
+ </section>
+ <section class="community-section" id="community"><div class="community-copy"><div class="eyebrow"><span class="eyebrow-line"></span> BUILT WITH PLAYERS / 03</div><h2>Это больше,<br>чем <em>модификации.</em></h2><p>MODNEST — пространство, где игроки находят вдохновение, собирают собственный стиль и делятся идеями.</p><button class="feature-button" id="join">О проекте <span>↗</span></button></div><div class="community-art"><div class="community-ring"></div><div class="community-m">M<span>✳</span></div><div class="community-caption">PLAY<br>WITHOUT<br>LIMITS.</div></div></section>
 </main>
-<footer class="footer"><div class="footer-main"><a class="brand" href="#top"><span class="brand-symbol">M<span>✳</span></span><span class="brand-name">MODNEST<small>YOUR MOD UNIVERSE</small></span></a><p>Независимое пространство игровых модификаций.<br>Создавай свой стиль. Исследуй новое.</p><div class="footer-links"><b>НАВИГАЦИЯ</b><a href="#catalog">Каталог</a><a href="#collections">Подборки</a><a href="#community">Сообщество</a></div><div class="footer-links"><b>ИНФОРМАЦИЯ</b><a href="#help">Помощь</a><a href="#help">Контакты</a><a href="#help">О проекте</a></div></div><div class="footer-bottom"><span>© 2026 MODNEST. DEMO RELEASE.</span><span>BUILT FOR PLAYERS <b>✳</b></span></div></footer>
+<footer class="footer" id="about"><a class="brand footer-brand" href="#top"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>MODNEST<small>MODS. MADE. BETTER.</small></span></a><span>© 2026 MODNEST · DEMO RELEASE</span><span>MADE FOR PLAYERS <b>✳</b></span></footer>
+</div>
 <div class="toast" id="toast" role="status"></div>
-<div class="modal-backdrop hidden" id="modal"><section class="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modal-x" aria-label="Закрыть">×</button><div class="modal-mark">M✳</div><div class="kicker">MODNEST / ACCOUNT</div><h2 id="modal-title">ТВОЙ ПРОФИЛЬ</h2><p id="modal-desc">Личный кабинет и синхронизация коллекций появятся в следующем обновлении.</p><button class="primary-button" id="modal-ok">Понятно <span>✓</span></button></section></div>
+<div class="modal-backdrop hidden" id="modal"><section class="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modal-x" aria-label="Закрыть">×</button><div class="modal-mark">M✳</div><div class="eyebrow">MODNEST / ACCOUNT</div><h2 id="modal-title">ТВОЙ ПРОФИЛЬ</h2><p id="modal-desc">Личный кабинет появится в следующем обновлении.</p><button class="feature-button" id="modal-ok">Понятно <span>✓</span></button></section></div>
 <script src="app.js"></script>
 </body></html>
