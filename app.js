@@ -10,32 +10,33 @@ const mods=[
 ];
 const $=s=>document.querySelector(s);
 const $$=s=>[...document.querySelectorAll(s)];
-const readSet=k=>{try{return new Set(JSON.parse(localStorage.getItem(k)||'[]'))}catch{return new Set()}};
+const readSet=k=>{try{return new Set(JSON.parse(localStorage.getItem(k)||'[]').map(String))}catch{return new Set()}};
 let selected='Все',onlyFavorites=false;
 const favorites=readSet('modnest:favorites'),library=readSet('modnest:collection');
-function persist(){localStorage.setItem('modnest:favorites',JSON.stringify([...favorites]));localStorage.setItem('modnest:collection',JSON.stringify([...library]));updateCounts()}
+function persist(){try{localStorage.setItem('modnest:favorites',JSON.stringify([...favorites]));localStorage.setItem('modnest:collection',JSON.stringify([...library]))}catch{}updateCounts()}
 function updateCounts(){$('#favorite-count').textContent=favorites.size;$('#favorite-count-2').textContent=favorites.size}
 function toast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.classList.remove('show'),2400)}
 function currentList(){let list=mods.filter(m=>(selected==='Все'||m.category===selected)&&(!onlyFavorites||favorites.has(String(m.id)))&&(`${m.name} ${m.desc} ${m.category}`).toLowerCase().includes($('#search').value.trim().toLowerCase()));const order=$('#sort').value;if(order==='new')list.sort((a,b)=>b.fresh-a.fresh);else if(order==='name')list.sort((a,b)=>a.name.localeCompare(b.name));else list.sort((a,b)=>b.downloads-a.downloads);return list}
-function card(m){return `<article class="mod-card"><div class="mod-thumb" data-view="${m.id}" role="button" tabindex="0" aria-label="Подробнее: ${m.name}" style="--a:${m.a};--b:${m.b}"><span class="thumb-tag">${m.tag}</span><button class="favorite ${favorites.has(String(m.id))?'saved':''}" data-fav="${m.id}" aria-label="Добавить в избранное">${favorites.has(String(m.id))?'♥':'♡'}</button><span class="thumb-symbol">${m.symbol}</span></div><div class="mod-info"><div class="mod-meta"><span>${m.category.toUpperCase()}</span><span>↗ ${m.downloads.toLocaleString('ru-RU')}</span></div><h3 data-view="${m.id}" role="button" tabindex="0">${m.name}</h3><p>${m.desc}</p><div class="card-bottom"><span class="file-size">${m.size} · v${m.version}</span><button class="add-btn ${library.has(String(m.id))?'added':''}" data-add="${m.id}">${library.has(String(m.id))?'✓ В коллекции':'+ В коллекцию'}</button></div></div></article>`}
+function card(m){const saved=favorites.has(String(m.id)),added=library.has(String(m.id));return `<article class="mod-card"><div class="mod-thumb" data-view="${m.id}" role="button" tabindex="0" aria-label="Подробнее: ${m.name}" style="--a:${m.a};--b:${m.b}"><span class="thumb-tag">${m.tag}</span><button class="favorite ${saved?'saved':''}" data-fav="${m.id}" aria-label="Добавить в избранное">${saved?'♥':'♡'}</button><span class="thumb-symbol">${m.symbol}</span></div><div class="mod-info"><div class="mod-meta"><span>${m.category.toUpperCase()}</span><span>↗ ${m.downloads.toLocaleString('ru-RU')}</span></div><h3 data-view="${m.id}" role="button" tabindex="0">${m.name}</h3><p>${m.desc}</p><div class="card-bottom"><span class="file-size">${m.size} · v${m.version}</span><button class="add-btn ${added?'added':''}" data-add="${m.id}">${added?'✓ В коллекции':'+ В коллекцию'}</button></div></div></article>`}
 function render(){const list=currentList();$('#mod-grid').innerHTML=list.map(card).join('');$('#empty').classList.toggle('hidden',list.length!==0);$('#mod-grid').classList.toggle('hidden',list.length===0);$('#count').textContent=`ПОКАЗАНО ${String(list.length).padStart(2,'0')} ИЗ ${mods.length} МОДИФИКАЦИЙ`;updateCounts()}
 function setCategory(category){selected=category;$$('.category-tab').forEach(b=>b.classList.toggle('active',b.dataset.filter===category));render()}
-function openModal(title,desc,details=false){$('#modal-title').textContent=title;$('#modal-desc').textContent=desc;$('#modal-ok').textContent=details?'Закрыть':'Понятно';$('#modal').classList.remove('hidden')}
+function openModal(title,desc,details=false){$('#modal-title').textContent=title;$('#modal-desc').textContent=desc;$('#modal-ok').innerHTML=details?'Закрыть <span>✓</span>':'Понятно <span>✓</span>';$('#modal').classList.remove('hidden')}
 function showMod(id){const m=mods.find(x=>x.id===Number(id));if(!m)return;openModal(m.name,`${m.desc} Категория: ${m.category}. Размер: ${m.size}. Версия: ${m.version}. Рейтинг сообщества: ${m.rating}/5. Это демонстрационная карточка: реальные файлы и установка пока не подключены.`,true)}
+function accountModal(){openModal('ТВОЙ ПРОФИЛЬ','Личный кабинет, регистрация и синхронизация коллекций появятся в следующем обновлении. Сейчас избранное и твоя коллекция сохраняются в этом браузере.')}
 $('#category-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(b)setCategory(b.dataset.filter)});
-$$('.category-tab').forEach(b=>b.addEventListener('click',()=>setCategory(b.dataset.filter)));
 $('#search').addEventListener('input',render);$('#sort').addEventListener('change',render);
 $('#mod-grid').addEventListener('click',e=>{const fav=e.target.closest('[data-fav]'),add=e.target.closest('[data-add]'),view=e.target.closest('[data-view]');if(fav){e.stopPropagation();const id=fav.dataset.fav;favorites.has(id)?favorites.delete(id):favorites.add(id);persist();render();return}if(add){const id=add.dataset.add;library.has(id)?(library.delete(id),toast('Удалено из твоей коллекции')):(library.add(id),toast('Добавлено в твою коллекцию'));persist();render();return}if(view)showMod(view.dataset.view)});
 $('#mod-grid').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-view]')){e.preventDefault();showMod(e.target.dataset.view)}});
 $('#favorites-filter').addEventListener('click',()=>{onlyFavorites=!onlyFavorites;$('#favorites-filter').classList.toggle('active',onlyFavorites);render();toast(onlyFavorites?'Показано избранное':'Показан весь каталог')});
-$('#favorites-shortcut').addEventListener('click',()=>{$('#favorites-filter').click();$('#catalog').scrollIntoView({behavior:'smooth'})});
+$('#favorites-shortcut').addEventListener('click',()=>{$('#favorites-filter').click();$('#catalog').scrollIntoView({behavior:'smooth'});$('#sidebar').classList.remove('open')});
 $('#reset').addEventListener('click',()=>{onlyFavorites=false;$('#favorites-filter').classList.remove('active');$('#search').value='';$('#sort').value='popular';setCategory('Все');toast('Фильтры сброшены')});
 $('#more').addEventListener('click',()=>{$('#reset').click();$('#catalog').scrollIntoView({behavior:'smooth'})});
 $('#go-catalog').addEventListener('click',()=>$('#catalog').scrollIntoView({behavior:'smooth'}));
-function accountModal(){openModal('ТВОЙ ПРОФИЛЬ','Личный кабинет, регистрация и синхронизация коллекций появятся в следующем обновлении. Сейчас избранное и твоя коллекция сохраняются в этом браузере.')}
-['login','join'].forEach(id=>$('#'+id).addEventListener('click',accountModal));
+['login','top-profile'].forEach(id=>$('#'+id).addEventListener('click',accountModal));
+$('#join').addEventListener('click',()=>document.querySelector('#about').scrollIntoView({behavior:'smooth'}));
+$('#top-search').addEventListener('click',()=>{document.querySelector('#catalog').scrollIntoView({behavior:'smooth'});setTimeout(()=>$('#search').focus(),350)});
 $('#modal-x').addEventListener('click',()=>$('#modal').classList.add('hidden'));$('#modal-ok').addEventListener('click',()=>$('#modal').classList.add('hidden'));$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').classList.add('hidden')});
-$('#hamburger').addEventListener('click',()=>{$('.main-nav').classList.toggle('open')});
-$$('.nav-link').forEach(a=>a.addEventListener('click',()=>{$('.main-nav').classList.remove('open');$$('.nav-link').forEach(x=>x.classList.toggle('active',x===a))}));
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#search').focus()}if(e.key==='Escape')$('#modal').classList.add('hidden')});
+$('#hamburger').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
+$$('.side-link[href]').forEach(a=>a.addEventListener('click',()=>{$$('.side-link').forEach(x=>x.classList.toggle('active',x===a));$('#sidebar').classList.remove('open')}));
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#search').focus();$('#catalog').scrollIntoView({behavior:'smooth'})}if(e.key==='Escape'){$('#modal').classList.add('hidden');$('#sidebar').classList.remove('open')}});
 updateCounts();render();
