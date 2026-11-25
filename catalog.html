@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101114"><meta name="description" content="MODNEST — кураторская библиотека игровых редуксов и модификаций.">
+<title>Редуксы — MODNEST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+<div class="grain"></div>
+<header class="site-header">
+ <a class="wordmark" href="index.html" aria-label="MODNEST — главная"><span class="mark"><i></i><i></i><i></i><i></i></span><span>MODNEST<small>MODS, REIMAGINED</small></span></a>
+ <nav class="main-nav" aria-label="Основная навигация"><a href="index.html">Обзор</a><a class="active" href="catalog.html">Каталог</a><a href="#curated">Подборки</a><a href="#about">О проекте</a></nav>
+ <div class="header-actions">
+  <label class="header-search"><span>⌕</span><input id="search" type="search" placeholder="Поиск по каталогу..." aria-label="Поиск по названию"><kbd>⌘ K</kbd></label>
+  <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Переключить тему">◐</button>
+  <button class="upload-button" id="upload-open"><span>＋</span> Загрузить мод</button>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
+ </div>
+</header>
+<main>
+ <section class="catalog-intro">
+  <div class="intro-main"><div class="eyebrow"><span></span> THE MOD LIBRARY <b> / 001</b></div><h1>Библиотека <em>редуксов.</em></h1><p>Не просто моды. Тщательно собранные способы увидеть знакомую игру по-новому.</p><div class="intro-meta"><span class="live-dot"></span><b id="total-count">12 модов</b><i></i><span>Коллекция обновляется</span><i></i><span>25.11.2026</span></div></div>
+  <div class="intro-art" aria-hidden="true"><div class="art-cross"></div><div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div><div class="art-diamond"></div><span class="art-index">MN—01</span><span class="art-coordinate">51°30'26.4"N<br>00°07'39.0"W</span></div>
+ </section>
+ <section class="catalog-workspace" aria-label="Каталог модификаций">
+  <div class="filter-row"><div class="filter-label">КАТЕГОРИИ <span>—</span></div><div class="filter-chips" id="filters">
+   <button class="filter-chip active" data-filter="Все">Все <span>12</span></button><button class="filter-chip" data-filter="FPS Boost">FPS Boost</button><button class="filter-chip" data-filter="Графика">Графика</button><button class="filter-chip" data-filter="Атмосфера">Атмосфера</button><button class="filter-chip" data-filter="Новинки">Новинки <i></i></button>
+  </div><div class="sort-control"><label for="sort">СОРТИРОВКА</label><select id="sort"><option value="popular">По популярности</option><option value="size">По размеру</option><option value="new">Новые</option></select></div></div>
+  <div class="results-bar"><div><span class="results-kicker">CURATED COLLECTION</span><span class="results-divider">/</span><b id="result-count">12 результатов</b></div><button class="reset-button" id="reset">Сбросить фильтры <span>↗</span></button></div>
+  <div class="mod-grid" id="mod-grid" aria-live="polite"></div>
+  <div class="empty-state hidden" id="empty"><span>⌕</span><h2>Пока ничего нет.</h2><p>Попробуй изменить запрос или выбрать другую категорию.</p><button id="empty-reset">Сбросить фильтры</button></div>
+  <div class="load-row"><span id="shown-count">01—06 <i>/ 12</i></span><button class="load-more" id="load-more">Показать ещё <span>＋</span></button><span class="load-note">THE COLLECTION IS ALWAYS GROWING</span></div>
+ </section>
+ <section class="curated-strip" id="curated"><div><div class="eyebrow"><span></span> FROM THE EDITORS / 002</div><h2>Настроение —<br><em>твой выбор.</em></h2></div><div class="curated-note">Каждая подборка — отдельная эстетика. Сохраняй то, что откликается, и собирай собственную игровую библиотеку.</div><a href="index.html#collections">Смотреть подборки <span>↗</span></a></section>
+</main>
+<footer class="site-footer" id="about"><a class="wordmark footer-mark" href="index.html"><span class="mark"><i></i><i></i><i></i><i></i></span><span>MODNEST<small>MODS, REIMAGINED</small></span></a><span>© 2026 MODNEST — CONCEPT CATALOG</span><span>MADE FOR THE WAY YOU PLAY <b>✳</b></span></footer>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal-layer hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><section class="modal-card"><button class="modal-close" id="modal-close" aria-label="Закрыть">×</button><div class="modal-symbol">MN<span>✳</span></div><div class="eyebrow"><span></span> MODNEST / NOTICE</div><h2 id="modal-title">Скоро здесь.</h2><p id="modal-text">Функция появится в следующем обновлении.</p><button class="modal-confirm" id="modal-confirm">Понятно <span>↗</span></button></section></div>
+<script src="catalog.js"></script>
+</body></html>
